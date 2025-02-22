@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:image/image.dart';
@@ -91,4 +90,3 @@ class GhostPixel {
     await outputFile.writeAsBytes(fileBytes);
   }
 }
-
