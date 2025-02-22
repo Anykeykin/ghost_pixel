@@ -1,3 +1,7 @@
+## 1.0.4
+
+- Add methods for hide bytes from image bytes & extract bytes from image bytes
+
 ## 1.0.3
 
 - Fix image version to 4.0.0
