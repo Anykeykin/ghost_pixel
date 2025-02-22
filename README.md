@@ -55,3 +55,10 @@ void main() async {
   print('File successfully extracted from the image!');
 }
 ```
+
+## 🎯 Benefits
+- Invisibility: Changes to the image are invisible to the human eye.
+- Security: Data is protected from accidental detection.
+- Flexibility: Supports any file type and image formats (PNG, JPEG, BMP).
+- Simplicity: Minimal code required for integration into your application.
+
