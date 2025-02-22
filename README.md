@@ -24,3 +24,34 @@ Then run:
 ```bash
 flutter pub get
 ```
+
+### Usage
+Hiding a File in an Image
+
+```dart
+import 'package:ghost_pixel/ghost_pixel.dart';
+
+void main() async {
+  await GhostPixel.hideFileInImage(
+    imagePath: 'input_image.png',
+    filePath: 'secret_file.txt',
+    outputImagePath: 'output_image.png',
+  );
+  print('File successfully hidden in the image!');
+}
+```
+
+Extracting a File from an Image
+
+```dart
+import 'package:ghost_pixel/ghost_pixel.dart';
+
+void main() async {
+  await GhostPixel.extractFileFromImage(
+    imagePath: 'output_image.png',
+    outputFilePath: 'extracted_file.txt',
+    fileSize: 1024, // File size in bytes
+  );
+  print('File successfully extracted from the image!');
+}
+```
