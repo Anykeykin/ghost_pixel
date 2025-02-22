@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:image/image.dart';
 
 class GhostPixel {
+  /// Hide File in Image
   static Future<void> hideFileInImage({
     required String imagePath,
     required String filePath,
@@ -50,6 +51,7 @@ class GhostPixel {
     await outputImageFile.writeAsBytes(encodePng(image));
   }
 
+  /// Extracting File from Image
   static Future<void> extractFileFromImage({
     required String imagePath,
     required String outputFilePath,
