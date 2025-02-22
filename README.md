@@ -8,3 +8,19 @@ GhostPixel is a powerful and easy-to-use library for hiding files inside images 
 - Ease of Use: Minimal code required for hiding and extracting data.
 - High Performance: Fast processing even for large files and high-resolution images.
 - Cross-Platform: Works on all platforms supported by Dart (Windows, macOS, Linux, iOS, Android).
+
+## 🚀 Quick Start
+
+### Installation
+Add GhostPixel to your pubspec.yaml:
+
+```yaml
+dependencies:
+  ghost_pixel: ^1.0.0
+```
+
+Then run:
+
+```bash
+flutter pub get
+```
