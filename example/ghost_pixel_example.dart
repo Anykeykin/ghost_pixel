@@ -19,4 +19,16 @@ void main() async {
     outputFilePath: extractedFilePath,
     fileSize: File(filePath).lengthSync(),
   );
+  
+  final encryptedImageBytes = await GhostPixel.hideBytesInImageBytes(
+    imageBytes: await File(imagePath).readAsBytes(),
+    fileBytes: await File(filePath).readAsBytes(),
+  );
+  File(outputImagePath).writeAsBytes(encryptedImageBytes);
+
+  final decryptedFileBytes = await GhostPixel.extractBytesFromImageBytes(
+    encryptedImageBytes: encryptedImageBytes,
+    fileSize: File(filePath).readAsBytesSync().length,
+  );
+  File(extractedFilePath).writeAsBytes(decryptedFileBytes);
 }
