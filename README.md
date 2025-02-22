@@ -62,3 +62,7 @@ void main() async {
 - Flexibility: Supports any file type and image formats (PNG, JPEG, BMP).
 - Simplicity: Minimal code required for integration into your application.
 
+## 📦 Supported Formats
+- Images: PNG, JPEG, BMP.
+- Files: Text files, documents, images, audio, video, and other binary data.
+
