@@ -1,6 +1,6 @@
 name: ghost_pixel
 description: Your data remains secure as it is seamlessly embedded into the image. Even when viewing the image, no one will suspect that it contains hidden information.
-version: 1.0.2
+version: 1.0.3
 repository: https://github.com/Anykeykin/ghost_pixel
 
 environment:
