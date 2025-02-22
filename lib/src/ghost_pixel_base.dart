@@ -26,10 +26,10 @@ class GhostPixel {
       for (var x = 0; x < image.width; x++) {
         final pixel = image.getPixel(x, y);
 
-        final a = getAlpha(pixel);
-        final r = getRed(pixel);
-        final g = getGreen(pixel);
-        final b = getBlue(pixel);
+        final a = pixel.a.toInt();
+        final r = pixel.r.toInt();
+        final g = pixel.g.toInt();
+        final b = pixel.b.toInt();
 
         if (byteIndex < fileBytes.length) {
           final bit = (fileBytes[byteIndex] >> (7 - bitIndex)) & 1;
@@ -42,7 +42,7 @@ class GhostPixel {
             byteIndex++;
           }
 
-          image.setPixel(x, y, getColor(newR, g, b, a));
+          image.setPixel(x, y, ColorFloat64.rgba(newR, g, b, a));
         }
       }
     }
@@ -69,7 +69,7 @@ class GhostPixel {
       for (var x = 0; x < image.width; x++) {
         final pixel = image.getPixel(x, y);
 
-        final r = getRed(pixel);
+        final r = pixel.r.toInt();
 
         if (fileBytes.length < fileSize) {
           final bit = r & 1;
