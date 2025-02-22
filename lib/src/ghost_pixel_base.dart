@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:ghost_pixel/src/image_crypto.dart';
 import 'package:image/image.dart';
 
 class GhostPixel {
@@ -20,33 +21,7 @@ class GhostPixel {
       throw Exception('Файл слишком большой для скрытия в этом изображении');
     }
 
-    int byteIndex = 0;
-    int bitIndex = 0;
-
-    for (var y = 0; y < image.height; y++) {
-      for (var x = 0; x < image.width; x++) {
-        final pixel = image.getPixel(x, y);
-
-        final a = pixel.a.toInt();
-        final r = pixel.r.toInt();
-        final g = pixel.g.toInt();
-        final b = pixel.b.toInt();
-
-        if (byteIndex < fileBytes.length) {
-          final bit = (fileBytes[byteIndex] >> (7 - bitIndex)) & 1;
-
-          final newR = (r & 0xFE) | bit;
-          bitIndex++;
-
-          if (bitIndex == 8) {
-            bitIndex = 0;
-            byteIndex++;
-          }
-
-          image.setPixel(x, y, ColorFloat64.rgba(newR, g, b, a));
-        }
-      }
-    }
+    ImageCrypto.imageEncrypt(image, fileBytes);
 
     final outputImageFile = File(outputImagePath);
     await outputImageFile.writeAsBytes(encodePng(image));
@@ -63,33 +38,7 @@ class GhostPixel {
       throw Exception('Файл слишком большой для скрытия в этом изображении');
     }
 
-    int byteIndex = 0;
-    int bitIndex = 0;
-
-    for (var y = 0; y < image.height; y++) {
-      for (var x = 0; x < image.width; x++) {
-        final pixel = image.getPixel(x, y);
-
-        final a = pixel.a.toInt();
-        final r = pixel.r.toInt();
-        final g = pixel.g.toInt();
-        final b = pixel.b.toInt();
-
-        if (byteIndex < fileBytes.length) {
-          final bit = (fileBytes[byteIndex] >> (7 - bitIndex)) & 1;
-
-          final newR = (r & 0xFE) | bit;
-          bitIndex++;
-
-          if (bitIndex == 8) {
-            bitIndex = 0;
-            byteIndex++;
-          }
-
-          image.setPixel(x, y, ColorFloat64.rgba(newR, g, b, a));
-        }
-      }
-    }
+    ImageCrypto.imageEncrypt(image, Uint8List.fromList(fileBytes));
 
     return encodePng(image);
   }
