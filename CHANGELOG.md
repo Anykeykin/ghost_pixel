@@ -1,3 +1,7 @@
+## 1.0.2
+
+- upd documentation
+
 ## 1.0.1
 
 - Fix image version to 3.3.0
