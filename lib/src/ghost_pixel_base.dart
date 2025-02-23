@@ -13,21 +13,13 @@ class GhostPixel {
     required String outputImagePath,
   }) async {
     final Uint8List imageBytes = await FileUtils.getFileBytes(imagePath);
-    final Image? image = await FileUtils.getImage(imageBytes);
-
     final fileBytes = await FileUtils.getFileBytes(filePath);
 
-    if (fileBytes.length * 5.1 > imageBytes.length) {
-      throw Exception('The file is too big to hide in this image.');
-    }
-    if (image != null) {
-      ImageCrypto.imageEncrypt(image, fileBytes);
-      final encryptedFileBytes = encodePng(image);
+    final encryptedFileBytes = await hideBytesInImageBytes(
+        imageBytes: imageBytes, fileBytes: fileBytes);
+    if (encryptedFileBytes.isNotEmpty) {
       final outputImageFile = File(outputImagePath);
       await outputImageFile.writeAsBytes(encryptedFileBytes);
-    }
-    if (image == null) {
-      throw Exception('image not decoded');
     }
   }
 
