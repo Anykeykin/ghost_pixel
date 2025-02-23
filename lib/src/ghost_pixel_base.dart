@@ -57,9 +57,16 @@ class GhostPixel {
   }) async {
     final image = await FileUtils.getImage(Uint8List.fromList(encryptedImageBytes));
 
-    final fileBytes = ImageCrypto.imageDecrypt(image, fileSize);
+    if(image != null){
+        final fileBytes = ImageCrypto.imageDecrypt(image, fileSize);
 
     return fileBytes;
+    }
+    if (image == null) {
+      throw Exception('image not decoded');
+    }
+    return [];
+    
   }
 
   /// Extracting File from Image
