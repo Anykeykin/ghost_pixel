@@ -12,12 +12,13 @@ class GhostPixel {
     required String outputImagePath,
   }) async {
     final imageFile = File(imagePath);
-    final image = decodeImage(await imageFile.readAsBytes())!;
+    final imageBytes = await imageFile.readAsBytes();
+    final image = decodeImage(imageBytes)!;
 
     final file = File(filePath);
     final fileBytes = await file.readAsBytes();
-
-    if (fileBytes.length * 8 > image.width * image.height * 3) {
+  
+    if (fileBytes.length * 5.1 > imageBytes.length) {
       throw Exception('Файл слишком большой для скрытия в этом изображении');
     }
 
@@ -34,7 +35,7 @@ class GhostPixel {
   }) async {
     final image = decodeImage(Uint8List.fromList(imageBytes))!;
 
-    if (fileBytes.length * 8 > image.width * image.height * 3) {
+    if (fileBytes.length * 5.1 > imageBytes.length) {
       throw Exception('Файл слишком большой для скрытия в этом изображении');
     }
 
