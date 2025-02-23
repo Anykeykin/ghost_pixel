@@ -2,8 +2,8 @@ import 'dart:typed_data';
 
 import 'package:image/image.dart';
 
-class ImageCrypto{
-  static void imageEncrypt(Image image,Uint8List fileBytes){
+class ImageCrypto {
+  static void imageEncrypt(Image image, Uint8List fileBytes) {
     int byteIndex = 0;
     int bitIndex = 0;
 
@@ -33,7 +33,7 @@ class ImageCrypto{
     }
   }
 
-  static List<int> imageDecrypt(Image image,int fileSize){
+  static List<int> imageDecrypt(Image image, int fileSize) {
     final fileBytes = <int>[];
     int byte = 0;
     int bitIndex = 0;
