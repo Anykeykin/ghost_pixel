@@ -47,11 +47,14 @@ class GhostPixel {
     required List<int> imageBytes,
     required List<int> fileBytes,
   }) async {
+    /// Get image class from bytes
     final image = await FileUtils.getImage(Uint8List.fromList(imageBytes));
 
+    /// Сheck file bytes length
     if (fileBytes.length * 5.1 > imageBytes.length) {
       throw Exception('The file is too big to hide in this image.');
     }
+
     if (image != null) {
       ImageCrypto.imageEncrypt(image, Uint8List.fromList(fileBytes));
       return encodePng(image);
@@ -59,6 +62,7 @@ class GhostPixel {
     if (image == null) {
       throw Exception('image not decoded');
     }
+
     return [];
   }
 
@@ -67,6 +71,7 @@ class GhostPixel {
     required List<int> encryptedImageBytes,
     required int fileSize,
   }) async {
+    /// Get image class from encrypted bytes
     final image =
         await FileUtils.getImage(Uint8List.fromList(encryptedImageBytes));
 
