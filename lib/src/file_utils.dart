@@ -4,9 +4,7 @@ import 'dart:typed_data';
 import 'package:image/image.dart';
 
 class FileUtils {
-  static Future<Image?> getImage(String imagePath) async{
-    final imageFile = File(imagePath);
-    final imageBytes = await imageFile.readAsBytes();
+  static Future<Image?> getImage(Uint8List imageBytes) async{
     return decodeImage(imageBytes);
   }
 
