@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:ghost_pixel/src/file_utils.dart';
 import 'package:ghost_pixel/src/image_crypto.dart';
 import 'package:image/image.dart';
 
@@ -11,9 +12,8 @@ class GhostPixel {
     required String filePath,
     required String outputImagePath,
   }) async {
-    final imageFile = File(imagePath);
-    final imageBytes = await imageFile.readAsBytes();
-    final image = decodeImage(imageBytes)!;
+    final Uint8List imageBytes = await FileUtils.getFileBytes(imagePath);
+    final Image? image = await FileUtils.getImage(imageBytes);
 
     final file = File(filePath);
     final fileBytes = await file.readAsBytes();
