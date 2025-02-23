@@ -17,6 +17,7 @@ class GhostPixel {
 
     final encryptedFileBytes = await hideBytesInImageBytes(
         imageBytes: imageBytes, fileBytes: fileBytes);
+        
     if (encryptedFileBytes.isNotEmpty) {
       final outputImageFile = File(outputImagePath);
       await outputImageFile.writeAsBytes(encryptedFileBytes);
