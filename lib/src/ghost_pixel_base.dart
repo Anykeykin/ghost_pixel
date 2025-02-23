@@ -19,7 +19,7 @@ class GhostPixel {
     final fileBytes = await file.readAsBytes();
   
     if (fileBytes.length * 5.1 > imageBytes.length) {
-      throw Exception('Файл слишком большой для скрытия в этом изображении');
+      throw Exception('The file is too big to hide in this image.');
     }
 
     ImageCrypto.imageEncrypt(image, fileBytes);
@@ -36,7 +36,7 @@ class GhostPixel {
     final image = decodeImage(Uint8List.fromList(imageBytes))!;
 
     if (fileBytes.length * 5.1 > imageBytes.length) {
-      throw Exception('Файл слишком большой для скрытия в этом изображении');
+      throw Exception('The file is too big to hide in this image.');
     }
 
     ImageCrypto.imageEncrypt(image, Uint8List.fromList(fileBytes));
