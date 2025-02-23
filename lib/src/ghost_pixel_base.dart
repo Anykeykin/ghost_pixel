@@ -25,6 +25,9 @@ class GhostPixel {
       final outputImageFile = File(outputImagePath);
       await outputImageFile.writeAsBytes(encodePng(image));
     }
+    if (image == null) {
+      throw Exception('image not decoded');
+    }
   }
 
   /// Hide Bytes in Image
