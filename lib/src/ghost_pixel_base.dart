@@ -17,7 +17,7 @@ class GhostPixel {
 
     final file = File(filePath);
     final fileBytes = await file.readAsBytes();
-  
+
     if (fileBytes.length * 5.1 > imageBytes.length) {
       throw Exception('The file is too big to hide in this image.');
     }
