@@ -12,4 +12,11 @@ class FileUtils {
     final imageFile = File(imagePath);
     return await imageFile.readAsBytes();
   }
+
+  static Future<void> writeFile(String filePath, List<int> fileBytes) async {
+    if (fileBytes.isNotEmpty) {
+      final outputFile = File(filePath);
+      await outputFile.writeAsBytes(fileBytes);
+    }
+  }
 }
