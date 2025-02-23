@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:ghost_pixel/src/file_utils.dart';
@@ -18,10 +17,7 @@ class GhostPixel {
     final encryptedFileBytes = await hideBytesInImageBytes(
         imageBytes: imageBytes, fileBytes: fileBytes);
 
-    if (encryptedFileBytes.isNotEmpty) {
-      final outputImageFile = File(outputImagePath);
-      await outputImageFile.writeAsBytes(encryptedFileBytes);
-    }
+    await FileUtils.writeFile(outputImagePath, encryptedFileBytes);
   }
 
   /// Hide Bytes in Image
@@ -71,10 +67,7 @@ class GhostPixel {
 
     final List<int> decryptedfileBytes = await extractBytesFromImageBytes(
         encryptedImageBytes: imageBytes, fileSize: fileSize);
-        
-    if (decryptedfileBytes.isNotEmpty) {
-      final outputFile = File(outputFilePath);
-      await outputFile.writeAsBytes(decryptedfileBytes);
-    }
+
+    await FileUtils.writeFile(outputFilePath, decryptedfileBytes);
   }
 }
