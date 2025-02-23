@@ -22,8 +22,9 @@ class GhostPixel {
     }
     if (image != null) {
       ImageCrypto.imageEncrypt(image, fileBytes);
+      final encryptedFileBytes = encodePng(image);
       final outputImageFile = File(outputImagePath);
-      await outputImageFile.writeAsBytes(encodePng(image));
+      await outputImageFile.writeAsBytes(encryptedFileBytes);
     }
     if (image == null) {
       throw Exception('image not decoded');
