@@ -45,12 +45,12 @@ class ImageCrypto {
     outerLoop:
     for (var y = 0; y < image.height; y++) {
       for (var x = 0; x < image.width; x++) {
-        final pixel = image.getPixel(x, y);
+        final Pixel pixel = image.getPixel(x, y);
 
-        final r = pixel.r.toInt();
+        final int r = pixel.r.toInt();
 
         if (fileBytes.length < fileSize) {
-          final bit = r & 1;
+          final int bit = r & 1;
 
           byte = (byte << 1) | bit;
           bitIndex++;
