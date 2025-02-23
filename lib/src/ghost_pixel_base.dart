@@ -56,6 +56,7 @@ class GhostPixel {
     }
 
     if (image != null) {
+      /// Encrypting image pixels
       ImageCrypto.imageEncrypt(image, Uint8List.fromList(fileBytes));
       return encodePng(image);
     }
@@ -76,6 +77,7 @@ class GhostPixel {
         await FileUtils.getImage(Uint8List.fromList(encryptedImageBytes));
 
     if (image != null) {
+      /// Decrypting image pixels
       return ImageCrypto.imageDecrypt(image, fileSize);
     }
     if (image == null) {
