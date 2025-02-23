@@ -59,8 +59,7 @@ class GhostPixel {
         await FileUtils.getImage(Uint8List.fromList(encryptedImageBytes));
 
     if (image != null) {
-      final fileBytes = ImageCrypto.imageDecrypt(image, fileSize);
-      return fileBytes;
+      return ImageCrypto.imageDecrypt(image, fileSize);
     }
     if (image == null) {
       throw Exception('image not decoded');
