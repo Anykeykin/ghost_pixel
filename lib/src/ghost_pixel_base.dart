@@ -42,7 +42,6 @@ class GhostPixel {
     }
     if (image != null) {
       ImageCrypto.imageEncrypt(image, Uint8List.fromList(fileBytes));
-
       return encodePng(image);
     }
     if (image == null) {
