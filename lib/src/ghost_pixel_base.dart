@@ -60,7 +60,6 @@ class GhostPixel {
 
     if (image != null) {
       final fileBytes = ImageCrypto.imageDecrypt(image, fileSize);
-
       return fileBytes;
     }
     if (image == null) {
