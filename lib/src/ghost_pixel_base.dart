@@ -35,7 +35,7 @@ class GhostPixel {
     required List<int> imageBytes,
     required List<int> fileBytes,
   }) async {
-    final image = decodeImage(Uint8List.fromList(imageBytes))!;
+    final image = await FileUtils.getImage(Uint8List.fromList(imageBytes));
 
     if (fileBytes.length * 5.1 > imageBytes.length) {
       throw Exception('The file is too big to hide in this image.');
