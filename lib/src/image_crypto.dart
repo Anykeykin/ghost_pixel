@@ -10,17 +10,17 @@ class ImageCrypto {
 
     for (var y = 0; y < image.height; y++) {
       for (var x = 0; x < image.width; x++) {
-        final pixel = image.getPixel(x, y);
+        final Pixel pixel = image.getPixel(x, y);
 
-        final a = pixel.a.toInt();
-        final r = pixel.r.toInt();
-        final g = pixel.g.toInt();
-        final b = pixel.b.toInt();
+        final int a = pixel.a.toInt();
+        final int r = pixel.r.toInt();
+        final int g = pixel.g.toInt();
+        final int b = pixel.b.toInt();
 
         if (byteIndex < fileBytes.length) {
-          final bit = (fileBytes[byteIndex] >> (7 - bitIndex)) & 1;
+          final int bit = (fileBytes[byteIndex] >> (7 - bitIndex)) & 1;
 
-          final newR = (r & 0xFE) | bit;
+          final int newR = (r & 0xFE) | bit;
           bitIndex++;
 
           if (bitIndex == 8) {
