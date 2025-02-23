@@ -29,6 +29,8 @@ class ImageCrypto {
           }
 
           image.setPixel(x, y, ColorFloat64.rgba(newR, g, b, a));
+        } else {
+          break;
         }
       }
     }
