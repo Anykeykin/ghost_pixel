@@ -50,33 +50,7 @@ class GhostPixel {
   }) async {
     final image = decodeImage(Uint8List.fromList(encryptedImageBytes))!;
 
-    final fileBytes = <int>[];
-    int byte = 0;
-    int bitIndex = 0;
-
-    outerLoop:
-    for (var y = 0; y < image.height; y++) {
-      for (var x = 0; x < image.width; x++) {
-        final pixel = image.getPixel(x, y);
-
-        final r = pixel.r.toInt();
-
-        if (fileBytes.length < fileSize) {
-          final bit = r & 1;
-
-          byte = (byte << 1) | bit;
-          bitIndex++;
-
-          if (bitIndex == 8) {
-            fileBytes.add(byte);
-            byte = 0;
-            bitIndex = 0;
-          }
-        } else {
-          break outerLoop;
-        }
-      }
-    }
+    final fileBytes = ImageCrypto.imageDecrypt(image, fileSize);
 
     return fileBytes;
   }
@@ -90,33 +64,7 @@ class GhostPixel {
     final imageFile = File(imagePath);
     final image = decodeImage(await imageFile.readAsBytes())!;
 
-    final fileBytes = <int>[];
-    int byte = 0;
-    int bitIndex = 0;
-
-    outerLoop:
-    for (var y = 0; y < image.height; y++) {
-      for (var x = 0; x < image.width; x++) {
-        final pixel = image.getPixel(x, y);
-
-        final r = pixel.r.toInt();
-
-        if (fileBytes.length < fileSize) {
-          final bit = r & 1;
-
-          byte = (byte << 1) | bit;
-          bitIndex++;
-
-          if (bitIndex == 8) {
-            fileBytes.add(byte);
-            byte = 0;
-            bitIndex = 0;
-          }
-        } else {
-          break outerLoop;
-        }
-      }
-    }
+    final fileBytes = ImageCrypto.imageDecrypt(image, fileSize);
 
     final outputFile = File(outputFilePath);
     await outputFile.writeAsBytes(fileBytes);
