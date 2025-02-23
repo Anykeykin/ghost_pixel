@@ -20,6 +20,20 @@ class GhostPixel {
     await FileUtils.writeFile(outputImagePath, encryptedFileBytes);
   }
 
+  /// Extracting File from Image
+  static Future<void> extractFileFromImage({
+    required String imagePath,
+    required String outputFilePath,
+    required int fileSize,
+  }) async {
+    final Uint8List imageBytes = await FileUtils.getFileBytes(imagePath);
+
+    final List<int> decryptedfileBytes = await extractBytesFromImageBytes(
+        encryptedImageBytes: imageBytes, fileSize: fileSize);
+
+    await FileUtils.writeFile(outputFilePath, decryptedfileBytes);
+  }
+
   /// Hide Bytes in Image
   static Future<List<int>> hideBytesInImageBytes({
     required List<int> imageBytes,
@@ -55,19 +69,5 @@ class GhostPixel {
       throw Exception('image not decoded');
     }
     return [];
-  }
-
-  /// Extracting File from Image
-  static Future<void> extractFileFromImage({
-    required String imagePath,
-    required String outputFilePath,
-    required int fileSize,
-  }) async {
-    final Uint8List imageBytes = await FileUtils.getFileBytes(imagePath);
-
-    final List<int> decryptedfileBytes = await extractBytesFromImageBytes(
-        encryptedImageBytes: imageBytes, fileSize: fileSize);
-
-    await FileUtils.writeFile(outputFilePath, decryptedfileBytes);
   }
 }
