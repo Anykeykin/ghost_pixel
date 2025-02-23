@@ -17,7 +17,7 @@ class GhostPixel {
 
     final encryptedFileBytes = await hideBytesInImageBytes(
         imageBytes: imageBytes, fileBytes: fileBytes);
-        
+
     if (encryptedFileBytes.isNotEmpty) {
       final outputImageFile = File(outputImagePath);
       await outputImageFile.writeAsBytes(encryptedFileBytes);
@@ -68,8 +68,10 @@ class GhostPixel {
     required int fileSize,
   }) async {
     final Uint8List imageBytes = await FileUtils.getFileBytes(imagePath);
+
     final List<int> decryptedfileBytes = await extractBytesFromImageBytes(
         encryptedImageBytes: imageBytes, fileSize: fileSize);
+        
     if (decryptedfileBytes.isNotEmpty) {
       final outputFile = File(outputFilePath);
       await outputFile.writeAsBytes(decryptedfileBytes);
