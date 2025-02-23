@@ -40,10 +40,15 @@ class GhostPixel {
     if (fileBytes.length * 5.1 > imageBytes.length) {
       throw Exception('The file is too big to hide in this image.');
     }
+    if (image != null) {
+      ImageCrypto.imageEncrypt(image, Uint8List.fromList(fileBytes));
 
-    ImageCrypto.imageEncrypt(image, Uint8List.fromList(fileBytes));
-
-    return encodePng(image);
+      return encodePng(image);
+    }
+    if (image == null) {
+      throw Exception('image not decoded');
+    }
+    return [];
   }
 
   /// Extracting Bytes from Image
