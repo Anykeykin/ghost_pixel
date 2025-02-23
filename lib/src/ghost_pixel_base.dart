@@ -63,7 +63,8 @@ class GhostPixel {
     required int fileSize,
   }) async {
     final imageFile = File(imagePath);
-    final image = decodeImage(await imageFile.readAsBytes())!;
+    final imageBytes = await imageFile.readAsBytes();
+    final image = decodeImage(imageBytes)!;
 
     final fileBytes = ImageCrypto.imageDecrypt(image, fileSize);
 
