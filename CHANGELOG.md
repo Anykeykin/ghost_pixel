@@ -1,3 +1,7 @@
+## 1.0.5
+
+- Fix attention max size file
+
 ## 1.0.4
 
 - Add methods for hide bytes from image bytes & extract bytes from image bytes
