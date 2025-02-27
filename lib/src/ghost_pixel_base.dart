@@ -37,13 +37,14 @@ class GhostPixel {
     required String imagePath,
     required String outputFilePath,
     required int fileSize,
+    required bool decompressFileBytes
   }) async {
     /// Encrypted image bytes
     final Uint8List imageBytes = await FileUtils.getFileBytes(imagePath);
 
     /// Get decrypted file bytes from image bytes
     final List<int> decryptedfileBytes = await extractBytesFromImageBytes(
-        encryptedImageBytes: imageBytes, fileSize: fileSize);
+        encryptedImageBytes: imageBytes, fileSize: fileSize,decompressFileBytes: decompressFileBytes);
 
     /// Write decrypting file bytes on file path
     await FileUtils.writeFile(outputFilePath, decryptedfileBytes);
