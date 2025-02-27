@@ -1,6 +1,10 @@
+## 1.0.7
+
+- Fix changelog
+
 ## 1.0.6
 
-- Fix attention max size file
+- Upd docs
 
 ## 1.0.5
 
