@@ -59,10 +59,10 @@ class GhostPixel {
     if (image != null) {
       /// Encrypting image pixels
       ImageCrypto.imageEncrypt(image, Uint8List.fromList(fileBytes));
-      switch(imageFormat){
-        return encodePng(image);
+      switch (imageFormat) {
+        case ImageFormat.png:
+          return encodePng(image);
       }
-      
     }
     if (image == null) {
       throw Exception('image not decoded');
