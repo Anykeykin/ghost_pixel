@@ -14,6 +14,7 @@ void main() async {
     filePath: filePath,
     outputImagePath: outputImagePath,
     imageFormat: ImageFormat.png,
+    compressFileBytes: true,
   );
 
   await GhostPixel.extractFileFromImage(
@@ -26,6 +27,7 @@ void main() async {
     imageBytes: await File(imagePath).readAsBytes(),
     fileBytes: await File(filePath).readAsBytes(),
     imageFormat: ImageFormat.png,
+    compressFileBytes: true,
   );
   File(outputImagePath).writeAsBytes(encryptedImageBytes);
 
