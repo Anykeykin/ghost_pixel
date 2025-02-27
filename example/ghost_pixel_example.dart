@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:ghost_pixel/ghost_pixel.dart';
+import 'package:image/image.dart';
 
 void main() async {
   final imagePath = 'yourPath.jpg';
@@ -12,6 +13,7 @@ void main() async {
     imagePath: imagePath,
     filePath: filePath,
     outputImagePath: outputImagePath,
+    imageFormat: ImageFormat.png,
   );
 
   await GhostPixel.extractFileFromImage(
@@ -23,6 +25,7 @@ void main() async {
   final encryptedImageBytes = await GhostPixel.hideBytesInImageBytes(
     imageBytes: await File(imagePath).readAsBytes(),
     fileBytes: await File(filePath).readAsBytes(),
+    imageFormat: ImageFormat.png
   );
   File(outputImagePath).writeAsBytes(encryptedImageBytes);
 
