@@ -12,6 +12,7 @@ class GhostPixel {
     required String filePath,
     required String outputImagePath,
     required ImageFormat imageFormat,
+    required bool compressBytes,
   }) async {
     /// Base image bytes
     final Uint8List imageBytes = await FileUtils.getFileBytes(imagePath);
@@ -24,6 +25,7 @@ class GhostPixel {
       imageBytes: imageBytes,
       fileBytes: fileBytes,
       imageFormat: imageFormat,
+      compressBytes: compressBytes,
     );
 
     /// Write encrypting file bytes on image path
@@ -90,6 +92,7 @@ class GhostPixel {
   static Future<List<int>> extractBytesFromImageBytes({
     required List<int> encryptedImageBytes,
     required int fileSize,
+
   }) async {
     /// Get image class from encrypted bytes
     final image =
