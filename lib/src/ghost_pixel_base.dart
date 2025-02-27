@@ -66,6 +66,8 @@ class GhostPixel {
           return encodeJpg(image);
         case ImageFormat.bmp:
           return encodeBmp(image);
+        default:
+          throw Exception('Image Format not supported');
       }
     }
     if (image == null) {
