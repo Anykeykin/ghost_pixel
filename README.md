@@ -36,6 +36,7 @@ void main() async {
     imagePath: 'input_image.png',
     filePath: 'secret_file.txt',
     outputImagePath: 'output_image.png',
+    imageFormat: InputFormat.png
   );
   print('File successfully hidden in the image!');
 }
