@@ -22,4 +22,11 @@ class FileUtils {
       await outputFile.writeAsBytes(fileBytes);
     }
   }
+
+  static List<int> compressBytes(List<int> fileBytes){
+  }
+
+   static List<int> decompressBytes(List<int> fileBytes){
+    
+  }
 }
