@@ -92,7 +92,7 @@ class GhostPixel {
   static Future<List<int>> extractBytesFromImageBytes({
     required List<int> encryptedImageBytes,
     required int fileSize,
-
+    required bool decompressFileBytes,
   }) async {
     /// Get image class from encrypted bytes
     final image =
@@ -100,7 +100,8 @@ class GhostPixel {
 
     if (image != null) {
       /// Decrypting image pixels
-      return ImageCrypto.imageDecrypt(image, fileSize);
+      List<int> fileBytes = ImageCrypto.imageDecrypt(image, fileSize);
+      return decompressFileBytes ? gzip.decode(fileBytes) : fileBytes;
     }
     if (image == null) {
       throw Exception('image not decoded');
