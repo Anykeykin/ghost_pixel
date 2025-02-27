@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:ghost_pixel/src/file_utils.dart';
@@ -51,9 +52,13 @@ class GhostPixel {
     required List<int> imageBytes,
     required List<int> fileBytes,
     required ImageFormat imageFormat,
+    required bool compressBytes,
   }) async {
     /// Get image class from bytes
     final image = await FileUtils.getImage(Uint8List.fromList(imageBytes));
+    if (compressBytes) {
+      fileBytes = gzip.encode(fileBytes);
+    }
 
     /// Сheck file bytes length
     if (fileBytes.length * 5.1 > imageBytes.length) {
