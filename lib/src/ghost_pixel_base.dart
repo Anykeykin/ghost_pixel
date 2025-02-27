@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:ghost_pixel/src/file_utils.dart';
@@ -63,7 +62,7 @@ class GhostPixel {
     /// Get image class from bytes
     final image = await FileUtils.getImage(Uint8List.fromList(imageBytes));
     if (compressFileBytes) {
-      fileBytes = gzip.encode(fileBytes);
+      fileBytes = FileUtils.compressBytes(fileBytes);
     }
 
     /// Сheck file bytes length
@@ -105,7 +104,7 @@ class GhostPixel {
     if (image != null) {
       /// Decrypting image pixels
       List<int> fileBytes = ImageCrypto.imageDecrypt(image, fileSize);
-      return decompressFileBytes ? gzip.decode(fileBytes) : fileBytes;
+      return decompressFileBytes ? FileUtils.decompressBytes(fileBytes) : fileBytes;
     }
     if (image == null) {
       throw Exception('image not decoded');
