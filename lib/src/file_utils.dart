@@ -24,9 +24,10 @@ class FileUtils {
   }
 
   static List<int> compressBytes(List<int> fileBytes){
+    return gzip.encode(fileBytes);
   }
 
    static List<int> decompressBytes(List<int> fileBytes){
-    
+    return gzip.decode(fileBytes);
   }
 }
