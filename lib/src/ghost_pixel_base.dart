@@ -62,6 +62,8 @@ class GhostPixel {
       switch (imageFormat) {
         case ImageFormat.png:
           return encodePng(image);
+        case ImageFormat.jpg:
+          return encodeJpg(image);
       }
     }
     if (image == null) {
