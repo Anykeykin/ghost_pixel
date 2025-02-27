@@ -33,11 +33,12 @@ class GhostPixel {
   }
 
   /// Extracting File from Image
-  static Future<void> extractFileFromImage(
-      {required String imagePath,
-      required String outputFilePath,
-      required int fileSize,
-      required bool decompressFileBytes}) async {
+  static Future<void> extractFileFromImage({
+    required String imagePath,
+    required String outputFilePath,
+    required int fileSize,
+    required bool decompressFileBytes,
+  }) async {
     /// Encrypted image bytes
     final Uint8List imageBytes = await FileUtils.getFileBytes(imagePath);
 
