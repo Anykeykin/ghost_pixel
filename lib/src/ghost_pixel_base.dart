@@ -46,6 +46,7 @@ class GhostPixel {
   static Future<List<int>> hideBytesInImageBytes({
     required List<int> imageBytes,
     required List<int> fileBytes,
+    required ImageFormat imageFormat,
   }) async {
     /// Get image class from bytes
     final image = await FileUtils.getImage(Uint8List.fromList(imageBytes));
@@ -58,7 +59,10 @@ class GhostPixel {
     if (image != null) {
       /// Encrypting image pixels
       ImageCrypto.imageEncrypt(image, Uint8List.fromList(fileBytes));
-      return encodePng(image);
+      switch(imageFormat){
+        return encodePng(image);
+      }
+      
     }
     if (image == null) {
       throw Exception('image not decoded');
