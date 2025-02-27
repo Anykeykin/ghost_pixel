@@ -1,3 +1,7 @@
+## 1.0.6
+
+- Fix attention max size file
+
 ## 1.0.5
 
 - Fix attention max size file
