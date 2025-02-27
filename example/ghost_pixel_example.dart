@@ -25,7 +25,7 @@ void main() async {
   final encryptedImageBytes = await GhostPixel.hideBytesInImageBytes(
     imageBytes: await File(imagePath).readAsBytes(),
     fileBytes: await File(filePath).readAsBytes(),
-    imageFormat: ImageFormat.png
+    imageFormat: ImageFormat.png,
   );
   File(outputImagePath).writeAsBytes(encryptedImageBytes);
 
