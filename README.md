@@ -16,7 +16,7 @@ Add GhostPixel to your pubspec.yaml:
 
 ```yaml
 dependencies:
-  ghost_pixel: ^1.0.8
+  ghost_pixel: ^1.0.9
 ```
 
 Then run:
@@ -58,7 +58,7 @@ void main() async {
 }
 ```
 
-Hiding a File in an Image
+Hiding a Bytes in an Image Bytes
 
 ```dart
 import 'package:ghost_pixel/ghost_pixel.dart';
@@ -69,11 +69,11 @@ void main() async {
     fileBytes: await FileUtils.getFileBytes(filePath),
     compressFileBytes: true,
   );
-  print('File successfully hidden in the image!');
+  print('Bytes successfully hidden in the image Bytes!');
 }
 ```
 
-Extracting a File from an Image
+Extracting a Bytes from an Image Bytes
 
 ```dart
 import 'package:ghost_pixel/ghost_pixel.dart';
@@ -84,7 +84,7 @@ void main() async {
     fileSize: File(filePath).lengthSync(),
     decompressFileBytes: true,
   );
-  print('File successfully extracted from the image!');
+  print('Bytes successfully extracted from the image bytes!');
 }
 ```
 
