@@ -1,3 +1,7 @@
+## 1.1.0
+
+-  Remove image format on code
+
 ## 1.0.9
 
 -  Upd readme

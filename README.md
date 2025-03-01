@@ -16,7 +16,7 @@ Add GhostPixel to your pubspec.yaml:
 
 ```yaml
 dependencies:
-  ghost_pixel: ^1.0.9
+  ghost_pixel: ^1.1.0
 ```
 
 Then run:
