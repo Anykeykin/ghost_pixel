@@ -10,7 +10,6 @@ class GhostPixel {
     required String imagePath,
     required String filePath,
     required String outputImagePath,
-    required ImageFormat imageFormat,
     required bool compressFileBytes,
   }) async {
     /// Base image bytes
@@ -23,7 +22,6 @@ class GhostPixel {
     final encryptedFileBytes = await hideBytesInImageBytes(
       imageBytes: imageBytes,
       fileBytes: fileBytes,
-      imageFormat: imageFormat,
       compressFileBytes: compressFileBytes,
     );
 
@@ -56,7 +54,6 @@ class GhostPixel {
   static Future<List<int>> hideBytesInImageBytes({
     required List<int> imageBytes,
     required List<int> fileBytes,
-    required ImageFormat imageFormat,
     required bool compressFileBytes,
   }) async {
     /// Get image class from bytes
@@ -73,7 +70,7 @@ class GhostPixel {
     if (image != null) {
       /// Encrypting image pixels
       ImageCrypto.imageEncrypt(image, Uint8List.fromList(fileBytes));
-      switch (imageFormat) {
+      switch (ImageFormat.png) {
         case ImageFormat.png:
           return encodePng(image);
         case ImageFormat.jpg:
