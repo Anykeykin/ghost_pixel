@@ -1,7 +1,6 @@
 ## 1.0.8
 
 - Add compression file bytes
-- Add image format for correctly encoding bytes on image
 
 ## 1.0.7
 
