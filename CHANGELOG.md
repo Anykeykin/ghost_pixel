@@ -1,3 +1,7 @@
+## 1.0.9
+
+-  Upd readme
+
 ## 1.0.8
 
 - Add compression file bytes
