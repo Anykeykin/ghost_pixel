@@ -33,10 +33,10 @@ import 'package:ghost_pixel/ghost_pixel.dart';
 
 void main() async {
   await GhostPixel.hideFileInImage(
-    imagePath: 'input_image.png',
-    filePath: 'secret_file.txt',
-    outputImagePath: 'output_image.png',
-    imageFormat: InputFormat.png
+    imagePath: imagePath,
+    filePath: filePath,
+    outputImagePath: outputImagePath,
+    compressFileBytes: true,
   );
   print('File successfully hidden in the image!');
 }
@@ -49,9 +49,40 @@ import 'package:ghost_pixel/ghost_pixel.dart';
 
 void main() async {
   await GhostPixel.extractFileFromImage(
-    imagePath: 'output_image.png',
-    outputFilePath: 'extracted_file.txt',
-    fileSize: 1024, // File size in bytes
+    imagePath: outputImagePath,
+    outputFilePath: extractedFilePath,
+    fileSize: File(filePath).lengthSync(),
+    decompressFileBytes: true,
+  );
+  print('File successfully extracted from the image!');
+}
+```
+
+Hiding a File in an Image
+
+```dart
+import 'package:ghost_pixel/ghost_pixel.dart';
+
+void main() async {
+  final encryptedImageBytes = await GhostPixel.hideBytesInImageBytes(
+    imageBytes: await FileUtils.getFileBytes(imagePath),
+    fileBytes: await FileUtils.getFileBytes(filePath),
+    compressFileBytes: true,
+  );
+  print('File successfully hidden in the image!');
+}
+```
+
+Extracting a File from an Image
+
+```dart
+import 'package:ghost_pixel/ghost_pixel.dart';
+
+void main() async {
+  final decryptedFileBytes = await GhostPixel.extractBytesFromImageBytes(
+    encryptedImageBytes: encryptedImageBytes,
+    fileSize: File(filePath).lengthSync(),
+    decompressFileBytes: true,
   );
   print('File successfully extracted from the image!');
 }
