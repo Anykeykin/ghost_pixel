@@ -104,7 +104,9 @@ class GhostPixel {
     if (image != null) {
       /// Decrypting image pixels
       List<int> fileBytes = ImageCrypto.imageDecrypt(image, fileSize);
-      return decompressFileBytes ? FileUtils.decompressBytes(fileBytes) : fileBytes;
+      return decompressFileBytes
+          ? FileUtils.decompressBytes(fileBytes)
+          : fileBytes;
     }
     if (image == null) {
       throw Exception('image not decoded');
