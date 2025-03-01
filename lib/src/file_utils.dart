@@ -24,10 +24,10 @@ class FileUtils {
   }
 
   static List<int> compressBytes(List<int> fileBytes) {
-    return gzip.encode(fileBytes);
+    return ZLibEncoder(raw: true, gzip: true).convert(fileBytes);
   }
 
   static List<int> decompressBytes(List<int> fileBytes) {
-    return gzip.decode(fileBytes);
+    return ZLibDecoder(raw: true).convert(fileBytes);
   }
 }
